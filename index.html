@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+        
+        <title>
+            Online Scanner
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        <script src="script.js"></script>
+		<style>
+		body{
+			background-color:aliceblue;
+		}
+		.heading{
+			
+			color:blue;
+		}
+		</style>
+    </head>
+    <body>
+	<center>
+	<div class="heading">
+	<h1>Online Document Scanner</h1>
+	</div>
+	</center>
+		<div class="row">
+        <div class="col-lg-6 options " style="text-align:center">
+            <h3>Capture Image</h3>
+            <button id="takePhoto">
+			<a href="ccapture-cropper.html">
+                <img src="images/camera.png" width="50" height="50">
+				</a>
+            </button>
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-6 upload" style="text-align:center">
+                <h3>Upload Image</h3>
+                <button id="uploadPhoto">
+                    <a href="cropper-index.html"><img src="images/upload.jpg" width="50" height="50"></a>
+                </button>
+                <br><br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="tool-bar">
+            <button class="tools" id="rotate">
+                
+                <img src="images/rotate.png" width="50" height="50">
+                <center><span>Rotate</span></center>
+            </button>
+            <button class="tools" id="Fit">
+                
+                <img src="images/fit.png" width="50" height="50">
+                <center>
+                    <span>Fit</span>
+                </center>
+            </button>
+            <button class="tools" id="crop">
+                <img src="images/crop.png" width="50" height="50">
+                <center>
+                    <span>Crop</span>
+                </center>
+            </button>
+            <button class="tools" id="download">
+                <img  src= "images/download.png" width="50" height="50">
+                <center>
+                    <span>Download</span>
+                </center>
+            </button>
+        </div>
+        
+    </body>
+</html>

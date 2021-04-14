@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>
+	Cropper JS 
+</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="cropperOG.css">
+<script src="cropper.js"></script>
+<script src="cropperOG.js"></script>
+<script type="text/javascript" src="opencv.js"></script>
+<style>
+	img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+
+#canvas {
+  height: 600px;
+  width: 600px;
+  background-color: #ffffff;
+  cursor: default;
+  border: 1px solid black;
+}
+.heading{
+	text-align: center;
+	background-color: aliceblue;
+	color:blue;
+}
+.tool-bar{
+	display:flex;
+	justify-content: space-around;
+}
+#crop-area{
+	width:80%;
+	display:flex;
+	justify-content:center;
+}
+.capture{
+	padding-top:30px;
+}
+#result{
+	
+	border:1px solid black;
+	padding-top:30px;
+	display:flex;
+	justify-content:center;
+}
+#filteredOutput{
+	width:200px;
+	height:200px;
+	border:1px solid black;
+	padding-top:30px;
+	display:flex;
+	justify-content:center;
+	
+}
+
+
+</style>
+</head>
+<body>
+<center>
+		<div class="heading">
+			<h2>Online Document Scanner</h2>
+		</div>
+	</center>
+
+		<div class="tool-bar">
+            <button id="btnRotate" class="tools" id="rotate">
+                
+                <img src="images/rotate.png" width="50" height="50">
+                <center><span>Rotate</span></center>
+            </button>
+			<button id="btnRotate2 class="tools" id="rotate">
+                
+                <img src="images/rotate.png" width="50" height="50">
+                <center><span>Rotate</span></center>
+            </button>
+            <button id="btnRestore" class="tools" id="Fit">
+                
+                <img src="images/fit.png" width="50" height="50">
+                <center>
+                    <span>Restore</span>
+                </center>
+            </button>
+            <button id="btnCrop" class="tools" id="crop">
+                <img src="images/crop.png" width="50" height="50">
+                <center>
+                    <span>Crop</span>
+                </center>
+            </button>
+			<a href="" id="btnDownload" class="btn download">
+            <button class="tools" id="download">
+                <img  src= "images/download.png" width="50" height="50">
+                <center>
+                    <span>Download without Filter</span>
+                </center>
+            </button>
+			</a>
+			<a href="" id="btnDownloadFilter" class="btn downloadfilter">
+            <button class="tools" id="download2">
+                <img  src= "images/download.png" width="50" height="50">
+                <center>
+                    <span>Download with Filter</span>
+                </center>
+            </button>
+			</a>
+			</div>
+			<br><br>
+			<div class="row">
+			
+			<div class="col-lg-6 capture">
+            <div class="camera">
+			<center>
+              <video id="video">Video stream not available.</video><br><br>
+              <button id="startbutton">Take photo</button> 
+			 </center>
+            </div>
+			</div>
+			</div>
+			</div>
+			<br><br>
+            
+<div class="crop-area">
+    <canvas id="canvas">
+    </canvas>
+</div>
+		
+		<br><br>
+		
+<div class="row">
+			<div  id="preview">
+				<center> 
+				<h3>Preview</h3>
+				<div id="result">
+					
+				</div>
+				</center>
+				</div>
+				<div>
+				<center>
+				<h3>Applying Filter</h3>
+				<canvas id="filteredOutput">
+					Your browser does not support the HTML5 canvas element.
+				</canvas>
+				</center>
+				</div>
+				
+</div>
+
+<script>
+  function filter(){
+    var canvas=document.getElementBy("img");
+    let mat = cv.imread(canvas);
+      let dst = new cv.Mat();
+      cv.cvtColor(mat, mat, cv.COLOR_RGBA2GRAY, 0);
+      console.log(dst);
+      //cv.adaptiveThreshold(mat, dst, 200, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 31, 15);
+      cv.adaptiveThreshold(mat, mat, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 21, 9);
+      cv.threshold(mat,dst,0,255,cv.THRESH_BINARY + cv.THRESH_OTSU);
+      cv.imshow('output', dst);
+      mat.delete();
+  }
+</script>
+</body>
+</html>

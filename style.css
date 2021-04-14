@@ -1,0 +1,12 @@
+.image-container{
+    text-align: center;
+}
+
+.tool-bar{
+    display: flex;
+    justify-content: space-evenly;
+}
+.tools{
+    border-radius: 8px;
+    border-color: whitesmoke;
+}
